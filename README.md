@@ -2,6 +2,7 @@
 - Setup and Default Web Configuration
 - Swagger UI and API's Documentation (SpringFox)
 - General Purpose for External and Internal use-cases
+- Dockerfile and Docker profile build support
 
 # Modules
 - API (Default Module)
