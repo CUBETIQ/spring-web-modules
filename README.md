@@ -1,5 +1,10 @@
-# Spring Kotlin and Gradle Modules
-- Empty Module
+# CUBETIQ Web Modules (Template)
+- Setup and Default Web Configuration
+- Swagger UI and API's Documentation (SpringFox)
+- General Purpose for External and Internal use-cases
+
+# Modules
+- API (Default Module)
 
 # Contributors
 - Sambo Chea <sombochea@cubetiqs.com>
