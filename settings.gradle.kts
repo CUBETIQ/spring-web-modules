@@ -1,1 +1,5 @@
-rootProject.name = "spring-kotlin-gradle-modules"
+rootProject.name = "spring-web-modules"
+
+include(
+    "api"
+)

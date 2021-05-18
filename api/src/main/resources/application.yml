@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: ${APP_PROFILE:dev}
+  application:
+    name: cubetiq-api-service
+
+cubetiq:
+  app:
+    data-dir: ${APP_DATA_DIR:${user.home}/${spring.application.name}}
+    name: CUBETIQ API Service
+    description: CUBETIQ API's Documentation
+
+logging:
+  file:
+    path: ${LOGGING_FILE_PATH:${cubetiq.app.data-dir}/logs/}
+    name: ${logging.file.path}/app.log
