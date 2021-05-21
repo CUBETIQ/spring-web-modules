@@ -1,23 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-buildscript {
-    val springBootVersion = "2.4.5"
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
-
 plugins {
-    id("org.springframework.boot") version "2.4.5" apply false
+    id("org.springframework.boot") version "2.5.0" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
-    kotlin("jvm") version "1.4.32" apply false
-    kotlin("plugin.spring") version "1.4.32" apply false
-    kotlin("plugin.jpa") version "1.4.32" apply false
+    kotlin("jvm") version "1.5.0" apply false
+    kotlin("plugin.spring") version "1.5.0" apply false
+    kotlin("plugin.jpa") version "1.5.0" apply false
 }
 
 allprojects {
