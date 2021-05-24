@@ -21,7 +21,7 @@ allprojects {
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict", "-Xopt-in=kotlin.RequiresOptIn")
+            freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = javaVersion
         }
     }
