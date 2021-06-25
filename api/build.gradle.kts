@@ -7,8 +7,8 @@ plugins {
 	kotlin("plugin.spring")
 }
 
-val kotlinVersion = "1.5.10"
-val springBootVersion = "2.5.1"
+val kotlinVersion = "1.5.20"
+val springBootVersion = "2.5.2"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
