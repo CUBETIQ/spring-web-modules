@@ -13,4 +13,4 @@
 ### Language and Framework
 - Spring Boot: 2.5.2
 - Kotlin: 1.5.20
-- Gradle: 7.0.2
+- Gradle: 7.1.1
