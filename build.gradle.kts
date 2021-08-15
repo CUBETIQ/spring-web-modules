@@ -9,6 +9,11 @@ plugins {
 }
 
 allprojects {
+    repositories {
+        maven("https://m.ctdn.net")
+        maven("https://m.ctdn.net/snapshots")
+    }
+
     group = "com.cubetiqs"
     version = "0.0.1-SNAPSHOT"
 
@@ -28,10 +33,6 @@ allprojects {
 }
 
 subprojects {
-    repositories {
-        mavenCentral()
-    }
-
     apply {
         plugin("io.spring.dependency-management")
     }
@@ -41,5 +42,4 @@ subprojects {
             mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
         }
     }
-
 }
