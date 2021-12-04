@@ -26,6 +26,16 @@ class IndexController @Autowired constructor(
         view["version"] = buildProperties.version
         view["date"] = buildProperties.time
         view["commit"] = buildProperties["commitId"]
+        view["authors"] = listOf(
+            mapOf(
+                "name" to "Sambo Chea",
+                "email" to "sombochea@cubetiqs.com",
+            ),
+            mapOf(
+                "name" to "CUBETIQ OSS",
+                "email" to "oss@cubetiqs.com",
+            )
+        )
 
         return response(view)
     }
