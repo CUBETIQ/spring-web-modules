@@ -1,17 +1,16 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.5.6" apply false
+    id("org.springframework.boot") version "2.5.7" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
-    kotlin("jvm") version "1.5.31" apply false
-    kotlin("plugin.spring") version "1.5.31" apply false
-    kotlin("plugin.jpa") version "1.5.31" apply false
+    kotlin("jvm") version "1.6.0" apply false
+    kotlin("plugin.spring") version "1.6.0" apply false
+    // kotlin("plugin.jpa") version "1.6.0" apply false
 }
 
 allprojects {
     repositories {
         maven("https://m.ctdn.net")
-        maven("https://m.ctdn.net/snapshots")
     }
 
     group = "com.cubetiqs"

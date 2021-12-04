@@ -11,6 +11,6 @@
 - Sambo Chea <sombochea@cubetiqs.com>
 
 ### Language and Framework
-- Spring Boot: 2.5.5
-- Kotlin: 1.5.31
-- Gradle: 7.2
+- Spring Boot: 2.5.7
+- Kotlin: 1.6.0
+- Gradle: 7.3.1
