@@ -1,5 +1,7 @@
 package com.cubetiqs.web.config
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType
+import io.swagger.v3.oas.annotations.security.SecurityScheme
 import io.swagger.v3.oas.models.ExternalDocumentation
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info
@@ -9,9 +11,15 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class SpringDocConfig {
+@SecurityScheme(
+    name = "bearerAuth",
+    type = SecuritySchemeType.HTTP,
+    scheme = "bearer",
+    bearerFormat = "JWT",
+
+)
+class OpenApiDocConfig {
     companion object {
-        private val PUBLIC_API_PATH get() = "/public/**"
         private val ADMIN_API_PATH get() = "/admin/**"
         private val DEFAULT_API_PATH get() = "/**"
     }
@@ -19,25 +27,17 @@ class SpringDocConfig {
     @Bean
     fun defaultApi(): GroupedOpenApi {
         return GroupedOpenApi.builder()
-            .group("default-api")
+            .group("default")
             .pathsToMatch(DEFAULT_API_PATH)
-            .pathsToExclude("/error", PUBLIC_API_PATH, ADMIN_API_PATH)
+            .pathsToExclude("/error", ADMIN_API_PATH)
             .packagesToScan("com.cubetiqs.web")
-            .build()
-    }
-
-    @Bean
-    fun publicApi(): GroupedOpenApi {
-        return GroupedOpenApi.builder()
-            .group("public-api")
-            .pathsToMatch(PUBLIC_API_PATH)
             .build()
     }
 
     @Bean
     fun adminApi(): GroupedOpenApi {
         return GroupedOpenApi.builder()
-            .group("admin-api")
+            .group("admin")
             .pathsToMatch(ADMIN_API_PATH)
             .build()
     }

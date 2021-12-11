@@ -2,6 +2,7 @@ package com.cubetiqs.web.util
 
 object RouteConstants {
     const val INDEX = "/"
+    const val ADMIN = "/admin"
 }
 
 object AppConstants {
