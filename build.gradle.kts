@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.5.7" apply false
+    id("org.springframework.boot") version "2.6.1" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
     kotlin("jvm") version "1.6.0" apply false
     kotlin("plugin.spring") version "1.6.0" apply false
@@ -9,6 +9,9 @@ plugins {
 }
 
 allprojects {
+    // Fixed Zero-Day CVE-2021-44225: https://cubetiq.atlassian.net/browse/CERT-1
+    ext["log4j2.version"] = "2.15.0"
+
     repositories {
         maven("https://m.ctdn.net")
     }
