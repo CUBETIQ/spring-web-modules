@@ -7,13 +7,14 @@ spring:
 cubetiq:
   app:
     data-dir: ${APP_DATA_DIR:${user.home}/${spring.application.name}}
-    name: CUBETIQ API Service
-    description: CUBETIQ API's Documentation
+    name: CUBETIQ Web API
+    description: CUBETIQ Spring Web API's Documentation
 
 logging:
   file:
     path: ${LOGGING_FILE_PATH:${cubetiq.app.data-dir}/logs/}
     name: ${logging.file.path}/app.log
+
 springdoc:
   api-docs:
     enabled: true
