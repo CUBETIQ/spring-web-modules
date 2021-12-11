@@ -14,3 +14,8 @@ logging:
   file:
     path: ${LOGGING_FILE_PATH:${cubetiq.app.data-dir}/logs/}
     name: ${logging.file.path}/app.log
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui

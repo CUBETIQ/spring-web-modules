@@ -32,8 +32,8 @@ springBoot {
 }
 
 dependencies {
-	// SWAGGER - FRAMEWORK
-	implementation("io.springfox:springfox-boot-starter:3.0.0")
+	// Migrating from SpringFox
+	implementation("org.springdoc:springdoc-openapi-ui:1.5.13")
 
 	// SPRING FRAMEWORK AND CORE
 	implementation("org.springframework.boot:spring-boot-starter-web")
