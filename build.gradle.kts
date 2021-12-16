@@ -10,7 +10,8 @@ plugins {
 
 allprojects {
     // Fixed Zero-Day CVE-2021-44228: https://cubetiq.atlassian.net/browse/CERT-1
-    ext["log4j2.version"] = "2.15.0"
+    // Fixed Zero-Day CVE-2021-45046: https://cubetiq.atlassian.net/browse/CERT-3
+    ext["log4j2.version"] = "2.16.0"
 
     repositories {
         maven("https://m.ctdn.net")
