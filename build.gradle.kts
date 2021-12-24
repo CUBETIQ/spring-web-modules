@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.1" apply false
+    id("org.springframework.boot") version "2.6.2" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
-    kotlin("jvm") version "1.6.0" apply false
-    kotlin("plugin.spring") version "1.6.0" apply false
-    // kotlin("plugin.jpa") version "1.6.0" apply false
+    kotlin("jvm") version "1.6.10" apply false
+    kotlin("plugin.spring") version "1.6.10" apply false
+    // kotlin("plugin.jpa") version "1.6.10" apply false
 }
 
 allprojects {
@@ -13,6 +13,9 @@ allprojects {
     // Fixed Zero-Day CVE-2021-45046: https://cubetiq.atlassian.net/browse/CERT-3
     // Fixed Zero-Day CVE-2021-45105: https://cubetiq.atlassian.net/browse/CERT-4
     ext["log4j2.version"] = "2.17.0"
+
+    // Fixed Zero-Day CVE-2021-42550: https://cubetiq.atlassian.net/browse/CERT-5
+    ext["logback.version"] = "1.2.9"
 
     repositories {
         maven("https://m.ctdn.net")
