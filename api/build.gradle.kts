@@ -33,7 +33,7 @@ springBoot {
 
 dependencies {
 	// Migrating from SpringFox
-	implementation("org.springdoc:springdoc-openapi-ui:1.5.13")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
 
 	// SPRING FRAMEWORK AND CORE
 	implementation("org.springframework.boot:spring-boot-starter-web")
