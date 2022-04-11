@@ -13,7 +13,7 @@ echo "===> Moving App File <==="
 bash "$SCRIPT_DIR"/move-file.sh
 
 echo "===> Gradle Building Application <==="
-bash gradlew build -x test
+bash gradlew bootJar
 
 echo "===> Docker Building Image <==="
 docker build . -t "$ROOT_HUB"

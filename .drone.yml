@@ -4,11 +4,11 @@ name: ci
 
 steps:
   - name: submodules
-    image: d.ctdn.net/alpine/git
+    image: alpine/git
     commands:
         - git submodule update --init --recursive
   - name: test
-    image: d.ctdn.net/cubetiq/openjdk:11u-ubuntu
+    image: cubetiq/openjdk:11u-ubuntu
     commands:
       - apt-get update && apt-get install git -y
       - sh gradlew bootJar
