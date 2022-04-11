@@ -20,12 +20,11 @@ class RedisController @Autowired constructor(
         return redisTemplate.opsForValue().multiGet(listOf(key)) ?: listOf()
     }
 
-    @PostMapping("/{key}")
+    @PostMapping
     fun set(
-        @PathVariable("key") key: String,
         @RequestBody body: RedisKVModel
     ): RedisKVModel {
-        redisTemplate.opsForValue().set(key, body)
+        redisTemplate.opsForValue().set(body.key ?: throw IllegalArgumentException("Key is required"), body)
         return body
     }
 }
