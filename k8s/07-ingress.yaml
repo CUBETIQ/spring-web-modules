@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-web-ingress
+  namespace: spring-web-dev
+spec:
+  rules:
+    - host: springwebapi-demo.ctdn.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: spring-web-service
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

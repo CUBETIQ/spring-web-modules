@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: spring-web-dev
+  name: spring-web-service
+spec:
+  selector:
+    app: spring-web-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spring-web-dev
+  name: spring-web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-web-api
+  template:
+    metadata:
+      labels:
+        app: spring-web-api
+    spec:
+      imagePullSecrets:
+        - name: registry-secret
+      containers:
+        - name: spring-web-api
+          image: registry.kh.cubetiqs.com/spring-web-api:demo
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: spring-web-dev-secret
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 300m
+              memory: 300Mi
+            limits:
+              cpu: 800m
+              memory: 800Mi

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: spring-web-dev
+  name: spring-web-dev-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-client # nfs-client OR local-path
+  resources:
+    requests:
+      storage: 5Gi

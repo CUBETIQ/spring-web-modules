@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: spring-web-dev
+  name: redis-service
+spec:
+  selector:
+    app: redis
+  ports:
+    - port: 6379
+  clusterIP: None
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: spring-web-dev
+  name: redis-deployment
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:alpine
+          ports:
+            - containerPort: 6379
+          args: [ "--requirepass", "$(REDIS_PASSWORD)" ]
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: spring-web-dev-secret
+                  key: REDIS_PASSWORD
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+              subPath: redis-data
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: spring-web-dev-volume

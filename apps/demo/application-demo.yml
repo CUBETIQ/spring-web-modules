@@ -1,2 +1,2 @@
 server:
-  port: ${APP_PORT:8090}
+  port: ${APP_PORT:8080}
