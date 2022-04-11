@@ -8,15 +8,18 @@ spring:
     host: ${REDIS_HOST:localhost}
     password: ${REDIS_PASSWORD:null}
   datasource:
-    enabled: ${DATASOURCE_ENABLED:false}
-    driverClassName: ${DATA_SOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
-    url: jdbc:h2:file:${H2_DB_PATH:${cubetiq.app.data-dir}/data/db};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: ${H2_USERNAME:sa}
-    password: ${H2_PASSWORD:password}
+    enabled: ${DATASOURCE_ENABLED:true}
+    driverClassName: ${DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    url: ${DATASOURCE_URL:jdbc:h2:file:${H2_DB_PATH:${cubetiq.app.data-dir}/data/db};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DATASOURCE_USERNAME:sa}
+    password: ${DATASOURCE_PASSWORD:password}
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
 
 module:
   user:
-    enabled: ${MODULE_USER_ENABLED:false}
+    enabled: ${MODULE_USER_ENABLED:true}
 
 cubetiq:
   app:
