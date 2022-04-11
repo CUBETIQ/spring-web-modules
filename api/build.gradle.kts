@@ -7,8 +7,8 @@ plugins {
 	kotlin("plugin.spring")
 }
 
-val kotlinVersion = "1.6.10"
-val springBootVersion = "2.6.2"
+val kotlinVersion = "1.6.20"
+val springBootVersion = "2.6.6"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
@@ -33,7 +33,7 @@ springBoot {
 
 dependencies {
 	// Migrating from SpringFox
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.2")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.7")
 
 	// SPRING FRAMEWORK AND CORE
 	implementation("org.springframework.boot:spring-boot-starter-web")
