@@ -4,6 +4,13 @@
 - Swagger UI and API's Documentation (SpringFox)
 - General Purpose for External and Internal use-cases
 - Dockerfile and Docker profile build support
+- Kubernetes support
+
+### Language and Framework
+
+- Spring Boot: 2.6.6
+- Kotlin: 1.6.20
+- Gradle: 7.4.1
 
 # Modules
 
@@ -162,9 +169,3 @@ spring:
 # Contributors
 
 - Sambo Chea <sombochea@cubetiqs.com>
-
-### Language and Framework
-
-- Spring Boot: 2.6.6
-- Kotlin: 1.6.20
-- Gradle: 7.4.1
