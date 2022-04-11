@@ -1,8 +1,22 @@
 spring:
   profiles:
-    active: ${APP_PROFILE:dev}
+    active: ${APP_PROFILE:demo}
   application:
     name: cubetiq-api-service
+  redis:
+    enabled: ${REDIS_ENABLED:false}
+    host: ${REDIS_HOST:localhost}
+    password: ${REDIS_PASSWORD:null}
+  datasource:
+    enabled: ${DATASOURCE_ENABLED:false}
+    driverClassName: ${DATA_SOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    url: jdbc:h2:file:${H2_DB_PATH:${cubetiq.app.data-dir}/data/db};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: ${H2_USERNAME:sa}
+    password: ${H2_PASSWORD:password}
+
+module:
+  user:
+    enabled: ${MODULE_USER_ENABLED:false}
 
 cubetiq:
   app:
