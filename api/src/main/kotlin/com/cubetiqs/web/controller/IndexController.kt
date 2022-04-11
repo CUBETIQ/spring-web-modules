@@ -3,6 +3,7 @@ package com.cubetiqs.web.controller
 import com.cubetiqs.web.model.response.ApiInfoAuthorResponse
 import com.cubetiqs.web.model.response.ApiInfoResponse
 import com.cubetiqs.web.model.response.HealthResponse
+import com.cubetiqs.web.model.response.NodeInfoResponse
 import com.cubetiqs.web.util.RouteConstants
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Autowired
@@ -42,6 +43,13 @@ class IndexController @Autowired constructor(
     fun health(): ResponseEntity<HealthResponse?> {
         return response(
             HealthResponse.UP
+        )
+    }
+
+    @GetMapping("/node")
+    fun node(): ResponseEntity<NodeInfoResponse?> {
+        return response(
+            NodeInfoResponse.INFO
         )
     }
 }

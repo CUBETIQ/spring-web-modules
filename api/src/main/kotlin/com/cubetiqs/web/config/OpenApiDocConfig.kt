@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.servers.Server
+//import org.springdoc.core.SpringDocUtils
+//import org.springdoc.core.converters.models.Pageable
+//import javax.servlet.http.HttpServletRequest
 
 @Configuration
 @SecurityScheme(
@@ -32,6 +35,20 @@ class OpenApiDocConfig @Autowired constructor(
         private val ADMIN_API_PATH get() = "/admin/**"
         private val DEFAULT_API_PATH get() = "/**"
     }
+
+//    init {
+//        SpringDocUtils.getConfig()
+//            .replaceParameterObjectWithClass(org.springframework.data.domain.Pageable::class.java, Pageable::class.java)
+//            .replaceParameterObjectWithClass(
+//                org.springframework.data.domain.PageRequest::class.java,
+//                Pageable::class.java
+//            )
+//            .removeRequestWrapperToIgnore(
+//                HttpServletRequest::class.java,
+//                org.springframework.data.domain.Pageable::class.java,
+//                org.springframework.data.domain.PageRequest::class.java,
+//            )
+//    }
 
     @Bean
     fun defaultApi(): GroupedOpenApi {

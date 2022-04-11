@@ -2,7 +2,7 @@ package com.cubetiqs.web.model.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 
-@Schema(name = "HealthResponse", description = "HealthResponse")
+@Schema(name = "HealthResponse", description = "Health Response")
 data class HealthResponse(
     @Schema(name = "status", description = "Status for the service")
     val status: String,

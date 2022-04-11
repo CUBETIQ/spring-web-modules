@@ -1,6 +1,6 @@
 package com.cubetiqs.web.property
 
-import com.cubetiqs.web.stereotype.FunctionComponent
+import com.cubetiqs.web.annotation.FunctionComponent
 import org.springframework.beans.factory.annotation.Value
 
 @FunctionComponent

@@ -1,4 +1,4 @@
-package com.cubetiqs.web.stereotype
+package com.cubetiqs.web.annotation
 
 import org.springframework.context.annotation.Lazy
 import org.springframework.core.annotation.AliasFor

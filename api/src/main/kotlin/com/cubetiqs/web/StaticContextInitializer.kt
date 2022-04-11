@@ -1,6 +1,6 @@
 package com.cubetiqs.web
 
-import com.cubetiqs.web.stereotype.FunctionComponent
+import com.cubetiqs.web.annotation.FunctionComponent
 import org.springframework.context.annotation.Lazy
 
 @FunctionComponent
