@@ -1,6 +1,7 @@
 kind: pipeline
-type: docker
+type: kubernetes
 name: ci
+
 steps:
   - name: submodules
     image: d.ctdn.net/alpine/git
