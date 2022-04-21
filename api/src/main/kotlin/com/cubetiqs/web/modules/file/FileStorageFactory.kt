@@ -32,6 +32,10 @@ object FileStorageFactory {
         getProvider().delete(fileName)
     }
 
+    fun deleteAll() {
+        getProvider().deleteAll()
+    }
+
     fun get(fileName: String): FileResponse {
         return getProvider().get(fileName)
     }
@@ -44,9 +48,11 @@ object FileStorageFactory {
         return null
     }
 
-    fun unzip(inputStream: InputStream) {
+    fun unzip(inputStream: InputStream): List<File> {
         if (getProvider() is FileStorageUnzip) {
-            (getProvider() as FileStorageUnzip).unzip(inputStream, null)
+            return (getProvider() as FileStorageUnzip).unzip(inputStream, null)
         }
+
+        return emptyList()
     }
 }

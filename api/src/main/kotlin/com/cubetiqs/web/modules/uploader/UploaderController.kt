@@ -102,11 +102,13 @@ class UploaderController @Autowired constructor(
 
     @ResponseStatus(value = org.springframework.http.HttpStatus.CREATED)
     @PostMapping("/unzip", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
-    @Operation(summary = "Zip a file")
+    @Operation(summary = "Unzip a file")
     fun unzip(
         @RequestPart file: MultipartFile,
-    ) {
-        FileStorageFactory.unzip(file.inputStream)
+    ): List<UploaderEntity> {
+        val files = FileStorageFactory.unzip(file.inputStream)
+            .map { UploaderEntity.fromFileWithoutStore(it) }
+        return repository.saveAll(files)
     }
 
     @ResponseStatus(value = org.springframework.http.HttpStatus.OK)
@@ -132,6 +134,9 @@ class UploaderController @Autowired constructor(
         val entity = repository.findById(UUID.fromString(id)).orElseThrow {
             throw IllegalArgumentException("File not found")
         }
+        if (!entity.path.isNullOrEmpty()) {
+            FileStorageFactory.delete(entity.path!!)
+        }
         repository.delete(entity)
     }
 
@@ -139,6 +144,7 @@ class UploaderController @Autowired constructor(
     @DeleteMapping
     @Operation(summary = "Delete all files")
     fun deleteAll() {
+        FileStorageFactory.deleteAll()
         repository.deleteAll()
     }
 }

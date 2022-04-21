@@ -6,4 +6,5 @@ interface FileStorageProvider {
     fun store(file: File): FileResponse
     fun get(fileName: String): FileResponse
     fun delete(fileName: String)
+    fun deleteAll()
 }

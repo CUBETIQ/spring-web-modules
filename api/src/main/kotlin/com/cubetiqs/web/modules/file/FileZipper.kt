@@ -86,7 +86,9 @@ object FileZipper {
         }
     }
 
-    fun unzip(fis: InputStream, destFolder: String) {
+    fun unzip(fis: InputStream, destFolder: String): List<File> {
+        val extractFiles = mutableListOf<File>()
+
         try {
             val root = File(destFolder)
             if (!root.exists()) {
@@ -104,12 +106,16 @@ object FileZipper {
                         file.mkdirs()
                     }
                 }
+
+                extractFiles.add(file)
                 zis.closeEntry()
             }
             zis.close()
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
+        return extractFiles
     }
 
     @Throws(IOException::class)

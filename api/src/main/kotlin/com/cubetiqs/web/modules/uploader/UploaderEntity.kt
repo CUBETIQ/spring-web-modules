@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile
 import java.io.File
 import java.io.InputStream
 import java.io.Serializable
+import java.nio.file.Files
 import java.util.*
 import javax.persistence.*
 
@@ -91,6 +92,17 @@ open class UploaderEntity(
             uploader.contentType = file.contentType
             uploader.contentLength = file.size
             uploader.path = store.shortPath
+            return uploader
+        }
+
+        fun fromFileWithoutStore(file: File): UploaderEntity {
+            val uploader = UploaderEntity()
+            uploader.file = file
+            uploader.providerType = "local"
+            uploader.filename = file.name
+            uploader.contentType = Files.probeContentType(file.toPath())
+            uploader.contentLength = file.length()
+            uploader.path = file.path
             return uploader
         }
 

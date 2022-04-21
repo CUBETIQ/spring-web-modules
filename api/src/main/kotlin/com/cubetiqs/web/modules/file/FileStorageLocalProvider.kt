@@ -54,6 +54,13 @@ open class FileStorageLocalProvider(
         }
     }
 
+    override fun deleteAll() {
+        val file = File(basePath)
+        if (file.isDirectory) {
+            file.deleteRecursively()
+        }
+    }
+
     override fun zip(sourceFolder: String?, os: OutputStream) {
         FileZipper.zipToStream(sourceFolder ?: basePath, os)
     }
@@ -62,7 +69,7 @@ open class FileStorageLocalProvider(
         return FileZipper.zipToBytes(sourceFolder ?: basePath)
     }
 
-    override fun unzip(inputStream: InputStream, destinationFolder: String?) {
+    override fun unzip(inputStream: InputStream, destinationFolder: String?): List<File> {
         return FileZipper.unzip(inputStream, destinationFolder ?: basePath)
     }
 }
