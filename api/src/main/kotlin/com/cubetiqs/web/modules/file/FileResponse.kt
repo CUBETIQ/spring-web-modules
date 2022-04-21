@@ -1,4 +1,4 @@
-package com.cubetiqs.web.modules.uploader
+package com.cubetiqs.web.modules.file
 
 import java.io.File
 

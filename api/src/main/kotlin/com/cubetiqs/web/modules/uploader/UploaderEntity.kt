@@ -1,5 +1,6 @@
 package com.cubetiqs.web.modules.uploader
 
+import com.cubetiqs.web.modules.file.FileStorageFactory
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.Hibernate
 import org.springframework.data.annotation.CreatedDate

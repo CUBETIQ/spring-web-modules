@@ -1,5 +1,6 @@
 package com.cubetiqs.web.modules.uploader
 
+import com.cubetiqs.web.modules.file.FileStorageFactory
 import com.cubetiqs.web.util.RouteConstants
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
@@ -72,6 +73,20 @@ class UploaderController @Autowired constructor(
         response.setContentLengthLong(file.length())
 
         FileCopyUtils.copy(file.readBytes(), response.outputStream)
+    }
+
+    @ResponseStatus(value = org.springframework.http.HttpStatus.OK)
+    @GetMapping("/zip", produces = [MediaType.APPLICATION_OCTET_STREAM_VALUE])
+    @Operation(summary = "Zip all files")
+    fun zipAll(
+        response: HttpServletResponse,
+    ) {
+        val zipBytes = FileStorageFactory.zipAll() ?: throw IllegalArgumentException("Zip file not found")
+        response.setHeader("Content-Disposition", "attachment; filename=\"files.zip\"")
+        response.contentType = "application/zip"
+        response.setContentLengthLong(zipBytes.size.toLong())
+
+        FileCopyUtils.copy(zipBytes, response.outputStream)
     }
 
     @ResponseStatus(value = org.springframework.http.HttpStatus.CREATED)

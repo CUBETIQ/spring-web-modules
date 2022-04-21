@@ -1,4 +1,4 @@
-package com.cubetiqs.web.modules.uploader
+package com.cubetiqs.web.modules.file
 
 import org.springframework.web.multipart.MultipartFile
 import java.io.File
@@ -7,7 +7,7 @@ object FileStorageFactory {
     private var provider: FileStorageProvider? = null
 
     fun setProvider(provider: FileStorageProvider) {
-        this.provider = provider
+        FileStorageFactory.provider = provider
     }
 
     fun getProvider(): FileStorageProvider {
@@ -24,7 +24,7 @@ object FileStorageFactory {
         ) "C:\\Windows\\Temp" else "/tmp"
         val temp = File("$tempPath/${file.originalFilename}")
         file.transferTo(temp)
-        return this.store(temp)
+        return store(temp)
     }
 
     fun delete(fileName: String) {
@@ -33,5 +33,13 @@ object FileStorageFactory {
 
     fun get(fileName: String): FileResponse {
         return getProvider().get(fileName)
+    }
+
+    fun zipAll(): ByteArray? {
+        if (getProvider() is FileStorageZipper) {
+            return (getProvider() as FileStorageZipper).zip(null)
+        }
+
+        return null
     }
 }
