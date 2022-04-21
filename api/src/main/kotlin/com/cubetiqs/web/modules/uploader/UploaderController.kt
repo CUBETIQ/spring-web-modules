@@ -79,10 +79,11 @@ class UploaderController @Autowired constructor(
     @GetMapping("/zip", produces = [MediaType.APPLICATION_OCTET_STREAM_VALUE])
     @Operation(summary = "Zip all files")
     fun zipAll(
+        @RequestParam(required = false, value = "filename", defaultValue = "files") filename: String?,
         response: HttpServletResponse,
     ) {
         val zipBytes = FileStorageFactory.zipAll() ?: throw IllegalArgumentException("Zip file not found")
-        response.setHeader("Content-Disposition", "attachment; filename=\"files.zip\"")
+        response.setHeader("Content-Disposition", "attachment; filename=\"$filename.zip\"")
         response.contentType = "application/zip"
         response.setContentLengthLong(zipBytes.size.toLong())
 
@@ -97,6 +98,15 @@ class UploaderController @Autowired constructor(
     ): UploaderEntity {
         val entity = UploaderEntity.fromFile(file)
         return repository.save(entity)
+    }
+
+    @ResponseStatus(value = org.springframework.http.HttpStatus.CREATED)
+    @PostMapping("/unzip", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
+    @Operation(summary = "Zip a file")
+    fun unzip(
+        @RequestPart file: MultipartFile,
+    ) {
+        FileStorageFactory.unzip(file.inputStream)
     }
 
     @ResponseStatus(value = org.springframework.http.HttpStatus.OK)

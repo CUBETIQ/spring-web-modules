@@ -2,11 +2,12 @@ package com.cubetiqs.web.modules.file
 
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.InputStream
 import java.io.OutputStream
 
 open class FileStorageLocalProvider(
     private val basePath: String,
-) : FileStorageProvider, FileStorageZipper {
+) : FileStorageProvider, FileStorageZip, FileStorageUnzip {
     private fun loadBasePath(fileName: String): String {
         val prefixPath = if (basePath.endsWith("/")) {
             ""
@@ -59,5 +60,9 @@ open class FileStorageLocalProvider(
 
     override fun zip(sourceFolder: String?): ByteArray {
         return FileZipper.zipToBytes(sourceFolder ?: basePath)
+    }
+
+    override fun unzip(inputStream: InputStream, destinationFolder: String?) {
+        return FileZipper.unzip(inputStream, destinationFolder ?: basePath)
     }
 }

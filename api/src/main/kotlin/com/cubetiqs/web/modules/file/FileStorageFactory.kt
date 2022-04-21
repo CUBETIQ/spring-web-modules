@@ -2,6 +2,7 @@ package com.cubetiqs.web.modules.file
 
 import org.springframework.web.multipart.MultipartFile
 import java.io.File
+import java.io.InputStream
 
 object FileStorageFactory {
     private var provider: FileStorageProvider? = null
@@ -36,10 +37,16 @@ object FileStorageFactory {
     }
 
     fun zipAll(): ByteArray? {
-        if (getProvider() is FileStorageZipper) {
-            return (getProvider() as FileStorageZipper).zip(null)
+        if (getProvider() is FileStorageZip) {
+            return (getProvider() as FileStorageZip).zip(null)
         }
 
         return null
+    }
+
+    fun unzip(inputStream: InputStream) {
+        if (getProvider() is FileStorageUnzip) {
+            (getProvider() as FileStorageUnzip).unzip(inputStream, null)
+        }
     }
 }
