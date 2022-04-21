@@ -34,6 +34,8 @@ module:
     enabled: ${MODULE_USER_ENABLED:true}
   uploader:
     enabled: ${MODULE_UPLOADER_ENABLED:true}
+    local:
+      path: ${MODULE_UPLOADER_FILE_PATH:${cubetiq.app.data-dir}/uploads}
 
 cubetiq:
   app:
