@@ -8,8 +8,8 @@ plugins {
 	kotlin("plugin.jpa")
 }
 
-val kotlinVersion = "1.6.20"
-val springBootVersion = "2.6.6"
+val kotlinVersion = "1.6.21"
+val springBootVersion = "2.6.7"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
