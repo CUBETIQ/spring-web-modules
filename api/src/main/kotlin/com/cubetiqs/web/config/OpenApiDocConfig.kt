@@ -32,7 +32,6 @@ class OpenApiDocConfig @Autowired constructor(
     val appProperties: AppProperties,
 ) {
     companion object {
-        private val ADMIN_API_PATH get() = "/admin/**"
         private val DEFAULT_API_PATH get() = "/**"
     }
 
@@ -55,16 +54,7 @@ class OpenApiDocConfig @Autowired constructor(
         return GroupedOpenApi.builder()
             .group("default")
             .pathsToMatch(DEFAULT_API_PATH)
-            .pathsToExclude("/error", ADMIN_API_PATH)
             .packagesToScan("com.cubetiqs.web")
-            .build()
-    }
-
-    @Bean
-    fun adminApi(): GroupedOpenApi {
-        return GroupedOpenApi.builder()
-            .group("admin")
-            .pathsToMatch(ADMIN_API_PATH)
             .build()
     }
 

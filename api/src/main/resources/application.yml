@@ -1,5 +1,7 @@
+http:
+  port: ${HTTP_PORT:8080}
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8443}
   ssl:
     key-store: ${SERVER_SSL_KEY_STORE:classpath:keystore/server.jks}
     key-store-password: ${SERVER_SSL_KEY_STORE_PASSWORD:cubetiq}
@@ -12,7 +14,7 @@ spring:
   profiles:
     active: ${APP_PROFILE:demo}
   application:
-    name: cubetiq-api-service
+    name: ${SERVICE_NAME:cubetiq-api-service}
   redis:
     enabled: ${REDIS_ENABLED:false}
     host: ${REDIS_HOST:localhost}
@@ -30,12 +32,14 @@ spring:
 module:
   user:
     enabled: ${MODULE_USER_ENABLED:true}
+  uploader:
+    enabled: ${MODULE_UPLOADER_ENABLED:true}
 
 cubetiq:
   app:
     data-dir: ${APP_DATA_DIR:${user.home}/${spring.application.name}}
-    name: CUBETIQ Web API
-    description: CUBETIQ Spring Web API's Documentation
+    name: ${APP_NAME:CUBETIQ Web API}
+    description: ${APP_DESCRIPTION:CUBETIQ Spring Web API's Documentation}
 
 logging:
   file:

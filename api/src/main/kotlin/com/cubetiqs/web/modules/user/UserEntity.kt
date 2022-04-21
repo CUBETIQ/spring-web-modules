@@ -5,6 +5,7 @@ import java.io.Serializable
 import java.util.*
 import javax.persistence.*
 
+@UserModule
 @Entity
 @Table(name = "user")
 open class UserEntity(

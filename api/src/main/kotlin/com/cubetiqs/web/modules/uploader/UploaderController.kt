@@ -1,4 +1,4 @@
-package com.cubetiqs.web.modules.user
+package com.cubetiqs.web.modules.uploader
 
 import com.cubetiqs.web.util.RouteConstants
 import io.swagger.v3.oas.annotations.Parameter
@@ -10,27 +10,27 @@ import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
-@UserModule
-@Tag(name = "User Controller")
+@UploaderModule
+@Tag(name = "Uploader Controller")
 @RestController
-@RequestMapping(RouteConstants.INDEX + "user")
-class UserController @Autowired constructor(
-    private val repository: UserRepository,
+@RequestMapping(RouteConstants.INDEX + "uploader")
+class UploaderController @Autowired constructor(
+    private val repository: UploaderRepository,
 ) {
     @GetMapping
     @PageableAsQueryParam
     fun getAll(
         @Parameter(hidden = true)
         pageable: Pageable?,
-    ): Page<UserEntity> {
+    ): Page<UploaderEntity> {
         return repository.findAll(pageable ?: Pageable.unpaged())
     }
 
     @ResponseStatus(value = org.springframework.http.HttpStatus.CREATED)
     @PostMapping
     fun create(
-        @RequestBody body: UserEntity
-    ): UserEntity {
+        @RequestBody body: UploaderEntity
+    ): UploaderEntity {
         return repository.save(body)
     }
 
@@ -38,10 +38,10 @@ class UserController @Autowired constructor(
     @PutMapping("/{id}")
     fun update(
         @PathVariable id: String,
-        @RequestBody body: UserEntity
-    ): UserEntity {
+        @RequestBody body: UploaderEntity
+    ): UploaderEntity {
         val user = repository.findById(UUID.fromString(id)).orElseThrow {
-            throw IllegalArgumentException("User not found")
+            throw IllegalArgumentException("File not found")
         }
         body.id = user.id
         return repository.save(body)
@@ -53,7 +53,7 @@ class UserController @Autowired constructor(
         @PathVariable id: String,
     ) {
         val user = repository.findById(UUID.fromString(id)).orElseThrow {
-            throw IllegalArgumentException("User not found")
+            throw IllegalArgumentException("File not found")
         }
         repository.delete(user)
     }
