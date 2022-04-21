@@ -1,12 +1,29 @@
 kind: pipeline
 type: kubernetes
+name: docker-pipeline
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: git.cubetiqs.com/spring-web-api
+      registry: git.cubetiqs.com
+      tags: latest
+
+---
+kind: pipeline
+type: kubernetes
 name: ci
 
 steps:
   - name: submodules
     image: alpine/git
     commands:
-        - git submodule update --init --recursive
+      - git submodule update --init --recursive
   - name: test
     image: cubetiq/openjdk:11u-ubuntu
     commands:

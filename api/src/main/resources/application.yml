@@ -6,7 +6,7 @@ server:
     key-store: ${SERVER_SSL_KEY_STORE:classpath:keystore/server.jks}
     key-store-password: ${SERVER_SSL_KEY_STORE_PASSWORD:cubetiq}
     key-password: ${SERVER_SSL_KEY_PASSWORD:cubetiq}
-    enabled: ${SERVER_SSL_ENABLED:true}
+    enabled: ${SERVER_SSL_ENABLED:false}
   compression:
     enabled: ${SERVER_COMPRESSION_ENABLED:${server.ssl.enabled}}
 
