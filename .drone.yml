@@ -10,7 +10,7 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: git.cubetiqs.com/CUBETIQ/spring-web-api
+      repo: git.cubetiqs.com/cubetiq/spring-web-api
       registry: git.cubetiqs.com
       tags: latest
 
