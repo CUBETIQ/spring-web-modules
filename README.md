@@ -1,7 +1,7 @@
 # CUBETIQ Web Modules (Template)
 
 - Setup and Default Web Configuration
-- Swagger UI and API's Documentation (SpringFox)
+- Swagger UI and API's Documentation (SpringDoc)
 - General Purpose for External and Internal use-cases
 - Dockerfile and Docker profile build support
 - Kubernetes support
