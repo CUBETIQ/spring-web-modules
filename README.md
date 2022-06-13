@@ -9,7 +9,7 @@
 ### Language and Framework
 
 - Spring Boot: 2.7.0
-- Kotlin: 1.6.21
+- Kotlin: 1.7.0
 - Gradle: 7.4.1
 
 # Modules
@@ -140,7 +140,6 @@ spring:
 ```
 
 - H2 (Embedded)
--
 
 ```yaml
 spring:
