@@ -20,7 +20,6 @@ allprojects {
 
     tasks.withType<JavaCompile> {
         sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
     }
 
     tasks.withType<KotlinCompile> {

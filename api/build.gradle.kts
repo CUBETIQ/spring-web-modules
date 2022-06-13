@@ -8,8 +8,8 @@ plugins {
 	kotlin("plugin.jpa")
 }
 
-val kotlinVersion = "1.6.21"
-val springBootVersion = "2.6.7"
+val kotlinVersion = "1.7.0"
+val springBootVersion = "2.7.0"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
@@ -51,7 +51,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
 	runtimeOnly("com.h2database:h2")
-	runtimeOnly("org.postgresql:postgresql")
+	// runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

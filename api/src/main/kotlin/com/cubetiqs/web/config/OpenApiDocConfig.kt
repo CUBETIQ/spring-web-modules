@@ -12,10 +12,13 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.servers.Server
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+
 //import org.springdoc.core.SpringDocUtils
 //import org.springdoc.core.converters.models.Pageable
 //import javax.servlet.http.HttpServletRequest
 
+@ConditionalOnProperty(name = ["springdoc.api-docs.enabled"], havingValue = "true")
 @Configuration
 @SecurityScheme(
     name = "bearerAuth",

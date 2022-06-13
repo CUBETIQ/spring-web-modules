@@ -28,8 +28,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
-
-module:
+    open-in-view: ${JPA_OPEN_IN_VIEW:false}
+  data:
+    redis:
+      repositories:
+        enabled: ${DATA_REDIS_REPOSITORIES_ENABLED:false}
+modules:
   user:
     enabled: ${MODULE_USER_ENABLED:true}
   uploader:
@@ -50,6 +54,6 @@ logging:
 
 springdoc:
   api-docs:
-    enabled: true
+    enabled: ${API_DOCS_ENABLED:true}
   swagger-ui:
     path: /swagger-ui
