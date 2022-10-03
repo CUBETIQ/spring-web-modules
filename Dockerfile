@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y git
 COPY . .
 
 RUN sh gradlew clean bootJar
+RUN rm -f build/libs/*-plain.jar
 
 # Build for container image
 FROM cubetiq/openjdk:jre-11u-debian
@@ -24,11 +25,11 @@ WORKDIR /opt/cubetiq
 # App volumn
 VOLUME ["/opt/cubetiq", "/data"]
 
-# Clinic Api Module Build Directory
-ARG CLINIC_API_BUILD_DIR=api/build
+# Api Module Build Directory
+ARG API_BUILD_DIR=api/build
 
 # Copy the app bundle to the workdir
-COPY --from=builder /app/${CLINIC_API_BUILD_DIR}/libs/*.jar ./api.jar
+COPY --from=builder /app/${API_BUILD_DIR}/libs/*.jar ./api.jar
 
 # App profile will run with
 ENV PROFILE=dev
