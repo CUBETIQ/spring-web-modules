@@ -6,6 +6,6 @@ APP_PROFILE=demo
 VERSION=demo
 IMAGE=spring-web-api
 CONTAINER=$IMAGE
-REGISTRY=registry.kh.cubetiqs.com
+REGISTRY=registry.ctdn.net
 EXPOSE_PORT=8080
 ROOT_HUB=$REGISTRY/$IMAGE:$VERSION
