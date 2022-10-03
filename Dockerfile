@@ -29,7 +29,7 @@ VOLUME ["/opt/cubetiq", "/data"]
 ARG API_BUILD_DIR=api/build
 
 # Copy the app bundle to the workdir
-COPY --from=builder /app/${API_BUILD_DIR}/libs/*.jar ./api.jar
+COPY --from=builder /app/${API_BUILD_DIR}/libs/api-0.0.1-SNAPSHOT.jar ./api.jar
 
 # App profile will run with
 ENV PROFILE=dev
