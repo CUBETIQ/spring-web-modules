@@ -16,7 +16,7 @@ allprojects {
     group = "com.cubetiqs"
     version = "0.0.1-SNAPSHOT"
 
-    val javaVersion = "11"
+    val javaVersion = "17"
 
     tasks.withType<JavaCompile> {
         sourceCompatibility = javaVersion
