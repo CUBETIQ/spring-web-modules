@@ -38,7 +38,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
 	// Migrating from SpringFox
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
 
 	// SPRING FRAMEWORK AND CORE
 	implementation("org.springframework.boot:spring-boot-starter-web")
