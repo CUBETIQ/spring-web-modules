@@ -27,8 +27,9 @@ spring:
     password: ${DATASOURCE_PASSWORD:password}
   jpa:
     hibernate:
-      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:create-drop}
     open-in-view: ${JPA_OPEN_IN_VIEW:false}
+    database-platform: ${JPA_DATABASE_PLATFORM:org.hibernate.dialect.H2Dialect}
   data:
     redis:
       repositories:
@@ -55,5 +56,3 @@ logging:
 springdoc:
   api-docs:
     enabled: ${API_DOCS_ENABLED:true}
-  swagger-ui:
-    path: /swagger-ui

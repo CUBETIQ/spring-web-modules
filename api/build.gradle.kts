@@ -8,8 +8,8 @@ plugins {
 	kotlin("plugin.jpa")
 }
 
-val kotlinVersion = "1.7.20"
-val springBootVersion = "2.7.4"
+val kotlinVersion = "1.7.22"
+val springBootVersion = "3.0.0"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
@@ -25,9 +25,9 @@ fun getGitHashLastCommit(): String {
 springBoot {
 	buildInfo {
 		properties {
-			additional["commitId"] = getGitHashLastCommit()
-			additional["springBootVersion"] = springBootVersion
-			additional["kotlinVersion"] = kotlinVersion
+			this.additional.put("commitId", getGitHashLastCommit())
+			this.additional.put("springBootVersion", springBootVersion)
+			this.additional.put("kotlinVersion", kotlinVersion)
 		}
 	}
 }
@@ -36,9 +36,10 @@ dependencies {
 	// Spring Data JPA (Required for Database Layer)
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
-	// Migrating from SpringFox
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
+	// Migrating from SpringDoc API (Swagger) for Support Spring Boot 3.x
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0")
 
 	// SPRING FRAMEWORK AND CORE
 	implementation("org.springframework.boot:spring-boot-starter-web")

@@ -10,6 +10,6 @@ import org.springframework.web.servlet.view.RedirectView
 class ApiDoc {
     @GetMapping(value = [ "/api-doc", "/api-docs"])
     fun redirect(): RedirectView {
-        return RedirectView("/swagger-ui/")
+        return RedirectView("/swagger-ui/index.html")
     }
 }

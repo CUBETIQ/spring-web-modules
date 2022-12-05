@@ -3,20 +3,27 @@ package com.cubetiqs.web.modules.user
 import org.hibernate.Hibernate
 import java.io.Serializable
 import java.util.*
-import javax.persistence.*
+import jakarta.persistence.*
+import org.hibernate.annotations.GenericGenerator
 
 @UserModule
 @Entity
-@Table(name = "user")
+@Table(name = "`user`")
 open class UserEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "custom-uuid")
+    @GenericGenerator(
+        name = "custom-uuid",
+        strategy = "org.hibernate.id.UUIDGenerator",
+        parameters = [org.hibernate.annotations.Parameter(name = "uuid_gen_strategy_class", value = "org.hibernate.id.uuid.CustomVersionOneStrategy")]
+    )
+    @Column(columnDefinition = "BINARY(16)")
     open var id: UUID? = null,
 
-    @Column(name = "name", length = 50)
+    @Column(name = "`name`", length = 50)
     open var name: String? = null,
 
-    @Column(name = "username", length = 50, unique = true)
+    @Column(name = "`username`", length = 50, unique = true)
     open var username: String? = null,
 ) : Serializable {
     override fun equals(other: Any?): Boolean {

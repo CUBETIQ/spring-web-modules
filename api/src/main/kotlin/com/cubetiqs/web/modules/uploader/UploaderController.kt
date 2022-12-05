@@ -14,7 +14,7 @@ import org.springframework.util.FileCopyUtils
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.util.*
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletResponse
 
 @UploaderModule
 @Tag(name = "Uploader Controller")

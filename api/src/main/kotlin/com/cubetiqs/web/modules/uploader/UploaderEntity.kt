@@ -12,40 +12,47 @@ import java.io.InputStream
 import java.io.Serializable
 import java.nio.file.Files
 import java.util.*
-import javax.persistence.*
+import jakarta.persistence.*
+import org.hibernate.annotations.GenericGenerator
 
 @UploaderModule
 @Entity
-@Table(name = "uploader")
+@Table(name = "`uploader`")
 @EntityListeners(AuditingEntityListener::class)
 open class UploaderEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "custom-uuid")
+    @GenericGenerator(
+        name = "custom-uuid",
+        strategy = "org.hibernate.id.UUIDGenerator",
+        parameters = [org.hibernate.annotations.Parameter(name = "uuid_gen_strategy_class", value = "org.hibernate.id.uuid.CustomVersionOneStrategy")]
+    )
+    @Column(columnDefinition = "BINARY(16)")
     open var id: UUID? = null,
 
-    @Column(name = "filename")
+    @Column(name = "`filename`")
     open var filename: String? = null,
 
-    @Column(name = "content_type")
+    @Column(name = "`content_type`")
     open var contentType: String? = null,
 
-    @Column(name = "content_length")
+    @Column(name = "`content_length`")
     open var contentLength: Long? = null,
 
-    @Column(name = "path", length = 300)
+    @Column(name = "`path`", length = 300)
     open var path: String? = null,
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
+    @Column(name = "`created_at`")
     @CreatedDate
     open var createdAt: Date? = null,
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
+    @Column(name = "`updated_at`")
     @LastModifiedDate
     open var updatedAt: Date? = null,
 
-    @Column(length = 30)
+    @Column(length = 30, name = "`provider_type`")
     open var providerType: String? = null,
 ) : Serializable {
     @Transient
