@@ -8,8 +8,8 @@ plugins {
 	kotlin("plugin.jpa")
 }
 
-val kotlinVersion = "1.7.22"
-val springBootVersion = "3.0.0"
+val kotlinVersion = "1.8.10"
+val springBootVersion = "3.0.4"
 
 // find the last commit
 fun getGitHashLastCommit(): String {
@@ -59,4 +59,8 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar> {
+	archiveFileName.set("api.jar")
 }

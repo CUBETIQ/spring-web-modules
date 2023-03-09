@@ -1,23 +1,27 @@
 # Builder
-FROM cubetiq/openjdk:11u-ubuntu as builder
+FROM bellsoft/liberica-openjdk-alpine-musl as builder
 LABEL maintainer="sombochea@cubetiqs.com"
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y git
+RUN apk update && apk add git
 
-COPY . .
+COPY gradlew ./
+COPY gradle ./gradle
+RUN ./gradlew
 
-RUN sh gradlew clean bootJar
-RUN rm -f build/libs/*-plain.jar
+
+COPY settings.gradle.kts ./
+COPY build.gradle.kts ./
+COPY api/build.gradle.kts ./api/build.gradle.kts
+COPY api/src ./api/src
+COPY .git ./.git
+
+RUN ./gradlew api:bootJar
 
 # Build for container image
-FROM cubetiq/openjdk:jre-11u-debian
+FROM bellsoft/liberica-openjre-alpine-musl
 LABEL maintainer="sombochea@cubetiqs.com"
-
-# Setup timezone to Phnom Penh
-RUN ln -sf /usr/share/zoneinfo/Asia/Phnom_Penh /etc/localtime
-RUN echo "Asia/Phnom_Penh" > /etc/timezone
 
 # App root path
 WORKDIR /opt/cubetiq
@@ -29,7 +33,7 @@ VOLUME ["/opt/cubetiq", "/data"]
 ARG API_BUILD_DIR=api/build
 
 # Copy the app bundle to the workdir
-COPY --from=builder /app/${API_BUILD_DIR}/libs/api-0.0.1-SNAPSHOT.jar ./api.jar
+COPY --from=builder /app/${API_BUILD_DIR}/libs/api.jar ./api.jar
 
 # App profile will run with
 ENV PROFILE=dev

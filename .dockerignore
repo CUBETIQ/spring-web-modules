@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+k8s/
+build/
+.github/
+uploads/
+apps/

@@ -1,5 +1,5 @@
 http:
-  port: ${HTTP_PORT:8080}
+  port: ${PORT:8080}
 server:
   port: ${SERVER_PORT:8443}
   ssl:
@@ -15,10 +15,6 @@ spring:
     active: ${APP_PROFILE:demo}
   application:
     name: ${SERVICE_NAME:cubetiq-api-service}
-  redis:
-    enabled: ${REDIS_ENABLED:false}
-    host: ${REDIS_HOST:localhost}
-    password: ${REDIS_PASSWORD:null}
   datasource:
     enabled: ${DATASOURCE_ENABLED:true}
     driverClassName: ${DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
@@ -32,8 +28,12 @@ spring:
     database-platform: ${JPA_DATABASE_PLATFORM:org.hibernate.dialect.H2Dialect}
   data:
     redis:
+      enabled: ${REDIS_ENABLED:false}
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:null}
       repositories:
         enabled: ${DATA_REDIS_REPOSITORIES_ENABLED:false}
+
 modules:
   user:
     enabled: ${MODULE_USER_ENABLED:true}
