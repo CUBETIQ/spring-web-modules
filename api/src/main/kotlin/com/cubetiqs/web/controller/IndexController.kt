@@ -33,7 +33,6 @@ class IndexController @Autowired constructor(
             service = buildProperties.artifact,
             version = buildProperties.version,
             date = buildProperties.time.toString(),
-            commit = buildProperties["commitId"],
             authors = authors,
         )
         return response(response)

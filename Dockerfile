@@ -4,8 +4,6 @@ LABEL maintainer="sombochea@cubetiqs.com"
 
 WORKDIR /app
 
-RUN apk update && apk add git
-
 COPY gradlew ./
 COPY gradle ./gradle
 RUN ./gradlew
@@ -15,7 +13,6 @@ COPY settings.gradle.kts ./
 COPY build.gradle.kts ./
 COPY api/build.gradle.kts ./api/build.gradle.kts
 COPY api/src ./api/src
-COPY .git ./.git
 
 RUN ./gradlew api:bootJar
 

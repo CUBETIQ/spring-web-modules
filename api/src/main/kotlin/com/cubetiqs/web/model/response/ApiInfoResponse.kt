@@ -9,7 +9,6 @@ data class ApiInfoResponse(
     val service: String,
     val version: String,
     val date: String,
-    val commit: String,
     val authors: Collection<ApiInfoAuthorResponse> = listOf(),
 ) : BaseRequestModel
 
