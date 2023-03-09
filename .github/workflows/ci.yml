@@ -41,7 +41,7 @@ jobs:
             - name: Push to dokku
               uses: dokku/github-action@master
               with:
-                  git_remote_url: 'ssh://dokku@heroku.ctdn.net:2222/spring-web-modules'
+                  git_remote_url: 'ssh://dokku@heroku.ctdn.net:2222/spring-web-api-demo'
                   ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
                   branch: main
                   git_push_flags: --force
