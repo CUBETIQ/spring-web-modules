@@ -19,7 +19,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // Migrating from SpringDoc API (Swagger) for Support Spring Boot 3.x
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 
     // SPRING FRAMEWORK AND CORE
     implementation("org.springframework.boot:spring-boot-starter-web")
